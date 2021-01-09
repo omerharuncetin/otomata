@@ -1,0 +1,403 @@
+{
+    "transitions" : [
+        {
+            "currentState": "q0",
+            "currentValue": "2",
+            "nextState": "q1",
+            "nextValue": "2",
+            "direction": "R"
+        },
+        {
+            "currentState": "q0",
+            "currentValue": "1",
+            "nextState": "q0",
+            "nextValue": "1",
+            "direction": "R"
+        },
+        {
+            "currentState": "q0",
+            "currentValue": "3",
+            "nextState": "q2",
+            "nextValue": "3",
+            "direction": "R"
+        },
+        {
+            "currentState": "q0",
+            "currentValue": "4",
+            "nextState": "q3",
+            "nextValue": "4",
+            "direction": "R"
+        },
+        {
+            "currentState": "q0",
+            "currentValue": "5",
+            "nextState": "q4",
+            "nextValue": "5",
+            "direction": "R"
+        },
+        {
+            "currentState": "q1",
+            "currentValue": "1",
+            "nextState": "A",
+            "nextValue": "2",
+            "direction": "L"
+        },
+        {
+            "currentState": "q1",
+            "currentValue": "2",
+            "nextState": "q1",
+            "nextValue": "2",
+            "direction": "R"
+        },
+        {
+            "currentState": "q1",
+            "currentValue": "3",
+            "nextState": "q2",
+            "nextValue": "3",
+            "direction": "R"
+        },
+        {
+            "currentState": "q1",
+            "currentValue": "4",
+            "nextState": "q3",
+            "nextValue": "4",
+            "direction": "R"
+        },
+        {
+            "currentState": "q1",
+            "currentValue": "5",
+            "nextState": "q4",
+            "nextValue": "5",
+            "direction": "R"
+        },
+        {
+            "currentState": "q2",
+            "currentValue": "1",
+            "nextState": "A",
+            "nextValue": "3",
+            "direction": "L"
+        },
+        {
+            "currentState": "q2",
+            "currentValue": "2",
+            "nextState": "B",
+            "nextValue": "3",
+            "direction": "L"
+        },
+        {
+            "currentState": "q2",
+            "currentValue": "3",
+            "nextState": "q2",
+            "nextValue": "3",
+            "direction": "R"
+        },
+        {
+            "currentState": "q2",
+            "currentValue": "4",
+            "nextState": "q3",
+            "nextValue": "4",
+            "direction": "R"
+        },
+        {
+            "currentState": "q2",
+            "currentValue": "5",
+            "nextState": "q4",
+            "nextValue": "5",
+            "direction": "R"
+        },
+        {
+            "currentState": "q3",
+            "currentValue": "1",
+            "nextState": "A",
+            "nextValue": "4",
+            "direction": "L"
+        },
+        {
+            "currentState": "q3",
+            "currentValue": "2",
+            "nextState": "B",
+            "nextValue": "4",
+            "direction": "L"
+        },
+        {
+            "currentState": "q3",
+            "currentValue": "3",
+            "nextState": "C",
+            "nextValue": "4",
+            "direction": "L"
+        },
+        {
+            "currentState": "q3",
+            "currentValue": "4",
+            "nextState": "q3",
+            "nextValue": "4",
+            "direction": "R"
+        },
+        {
+            "currentState": "q3",
+            "currentValue": "5",
+            "nextState": "q4",
+            "nextValue": "5",
+            "direction": "R"
+        },
+        {
+            "currentState": "q4",
+            "currentValue": "1",
+            "nextState": "A",
+            "nextValue": "5",
+            "direction": "L"
+        },
+        {
+            "currentState": "q4",
+            "currentValue": "2",
+            "nextState": "B",
+            "nextValue": "5",
+            "direction": "L"
+        },
+        {
+            "currentState": "q4",
+            "currentValue": "3",
+            "nextState": "C",
+            "nextValue": "5",
+            "direction": "L"
+        },
+        {
+            "currentState": "q4",
+            "currentValue": "4",
+            "nextState": "D",
+            "nextValue": "5",
+            "direction": "L"
+        },
+        {
+            "currentState": "q4",
+            "currentValue": "5",
+            "nextState": "q4",
+            "nextValue": "5",
+            "direction": "R"
+        },
+        {
+            "currentState": "A",
+            "currentValue": "2",
+            "nextState": "q0",
+            "nextValue": "1",
+            "direction": "R"
+        },
+        {
+            "currentState": "A",
+            "currentValue": "3",
+            "nextState": "q0",
+            "nextValue": "1",
+            "direction": "R"
+        },
+        {
+            "currentState": "A",
+            "currentValue": "4",
+            "nextState": "q0",
+            "nextValue": "1",
+            "direction": "R"
+        },
+        {
+            "currentState": "A",
+            "currentValue": "5",
+            "nextState": "q0",
+            "nextValue": "1",
+            "direction": "R"
+        },
+        {
+            "currentState": "B",
+            "currentValue": "3",
+            "nextState": "q1",
+            "nextValue": "2",
+            "direction": "R"
+        },
+        {
+            "currentState": "B",
+            "currentValue": "4",
+            "nextState": "q1",
+            "nextValue": "2",
+            "direction": "R"
+        },
+        {
+            "currentState": "B",
+            "currentValue": "5",
+            "nextState": "q1",
+            "nextValue": "2",
+            "direction": "R"
+        },
+        {
+            "currentState": "C",
+            "currentValue": "4",
+            "nextState": "q2",
+            "nextValue": "3",
+            "direction": "R"
+        },
+        {
+            "currentState": "C",
+            "currentValue": "5",
+            "nextState": "q2",
+            "nextValue": "3",
+            "direction": "R"
+        },
+        {
+            "currentState": "D",
+            "currentValue": "5",
+            "nextState": "q3",
+            "nextValue": "4",
+            "direction": "R"
+        },
+        {
+            "currentState": "q0",
+            "currentValue": "blank",
+            "nextState": "l",
+            "nextValue": "1",
+            "direction": "L"
+        },
+        {
+            "currentState": "q1",
+            "currentValue": "blank",
+            "nextState": "l",
+            "nextValue": "2",
+            "direction": "L"
+        },
+        {
+            "currentState": "q2",
+            "currentValue": "blank",
+            "nextState": "l",
+            "nextValue": "3",
+            "direction": "L"
+        },
+        {
+            "currentState": "q3",
+            "currentValue": "blank",
+            "nextState": "l",
+            "nextValue": "4",
+            "direction": "L"
+        },
+        {
+            "currentState": "q4",
+            "currentValue": "blank",
+            "nextState": "l",
+            "nextValue": "5",
+            "direction": "L"
+        },
+        {
+            "currentState": "l",
+            "currentValue": "1",
+            "nextState": "L",
+            "nextValue": "blank",
+            "direction": "L"
+        },
+        {
+            "currentState": "l",
+            "currentValue": "2",
+            "nextState": "L",
+            "nextValue": "blank",
+            "direction": "L"
+        },
+        {
+            "currentState": "l",
+            "currentValue": "3",
+            "nextState": "L",
+            "nextValue": "blank",
+            "direction": "L"
+        },
+        {
+            "currentState": "l",
+            "currentValue": "4",
+            "nextState": "L",
+            "nextValue": "blank",
+            "direction": "L"
+        },
+        {
+            "currentState": "l",
+            "currentValue": "5",
+            "nextState": "L",
+            "nextValue": "blank",
+            "direction": "L"
+        },
+        {
+            "currentState": "L",
+            "currentValue": "1",
+            "nextState": "L",
+            "nextValue": "1",
+            "direction": "L"
+        },
+        {
+            "currentState": "L",
+            "currentValue": "2",
+            "nextState": "L",
+            "nextValue": "2",
+            "direction": "L"
+        },
+        {
+            "currentState": "L",
+            "currentValue": "3",
+            "nextState": "L",
+            "nextValue": "3",
+            "direction": "L"
+        },
+        {
+            "currentState": "L",
+            "currentValue": "4",
+            "nextState": "L",
+            "nextValue": "4",
+            "direction": "L"
+        },
+        {
+            "currentState": "L",
+            "currentValue": "5",
+            "nextState": "L",
+            "nextValue": "5",
+            "direction": "L"
+        },
+        {
+            "currentState": "L",
+            "currentValue": "blank",
+            "nextState": "J",
+            "nextValue": "blank",
+            "direction": "R"
+        },
+        {
+            "currentState": "J",
+            "currentValue": "blank",
+            "nextState": "z",
+            "nextValue": "!",
+            "direction": "S"
+        },
+        {
+            "currentState": "J",
+            "currentValue": "1",
+            "nextState": "q0",
+            "nextValue": "1",
+            "direction": "S"
+        },
+        {
+            "currentState": "J",
+            "currentValue": "2",
+            "nextState": "q1",
+            "nextValue": "2",
+            "direction": "S"
+        },
+        {
+            "currentState": "J",
+            "currentValue": "3",
+            "nextState": "q2",
+            "nextValue": "3",
+            "direction": "S"
+        },
+        {
+            "currentState": "J",
+            "currentValue": "4",
+            "nextState": "q3",
+            "nextValue": "4",
+            "direction": "S"
+        },
+        {
+            "currentState": "J",
+            "currentValue": "5",
+            "nextState": "q4",
+            "nextValue": "5",
+            "direction": "S"
+        }
+    ]
+}

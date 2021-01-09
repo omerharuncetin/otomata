@@ -9,3 +9,15 @@
     color: #989898;
     font-size: 90%;
 }
+
+.boxType{
+    text-align: center;
+    border:1px double #3e3232;
+    width: 5%;
+    padding : 1%;
+}
+
+.ortala{
+    text-align: center;
+    margin-bottom: 1%;
+}

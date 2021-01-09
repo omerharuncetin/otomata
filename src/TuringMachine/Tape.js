@@ -3,18 +3,20 @@ class Tape {
         this.tape = Tape.parse(string)
     }
     get status() {
-        return this.tape.join(" ")
+        return this.tape.join("")
     }
     extendLeft() {
-        this.tape.unshift("B")
+        this.tape.unshift("blank")
     }
     extendRight() {
-        this.tape.push("B")
+        this.tape.push("blank")
     }
     write(symbol, location) {
         this.tape[location] = symbol
     }
     static parse(string) {
-        return string.split(" ")
+        return string.split("")
     }
 }
+
+export default Tape

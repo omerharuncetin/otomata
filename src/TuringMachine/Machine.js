@@ -14,6 +14,10 @@ class Machine {
     stepLookup() {
         const ruleset = this.ruleset.find(x=> x.currentState === this.head.state
             && x.currentValue === this.tape.tape[this.head.location]);
+            console.log(ruleset)
+            console.log("head state : " + this.head.state)
+            console.log("tape head : " +this.tape.tape[this.head.location])
+
 
         return ruleset ? ruleset : false
 
@@ -28,9 +32,9 @@ class Machine {
 
     step() {
         const lookup = this.stepLookup();
-        let new_state = lookup[0];
-        let new_symbol = lookup[1];
-        let move = lookup[2];
+        let new_state = lookup.nextState;
+        let new_symbol = lookup.nextValue;
+        let move = lookup.direction;
 
         this.tape.write(new_symbol, this.head.location);
         this.head.state = new_state
@@ -52,11 +56,11 @@ class Machine {
         else {
             this.head.location += 1
         }
+
     }
 
     run(currentTape) {
-        while ( this.stepLookup() ) {
-            console.log(this.tape.status)
+        while (this.stepLookup() ) {
             this.step();
             currentTape(this.tape.status, this.head.location)
         }

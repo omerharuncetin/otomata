@@ -13,6 +13,7 @@ class Tape {
     }
     write(symbol, location) {
         this.tape[location] = symbol
+        //yer degistirme yapılması lazım
     }
     static parse(string) {
         return string.split("")

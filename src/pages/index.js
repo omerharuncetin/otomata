@@ -12,6 +12,7 @@ const Transitions = require('../../formatted.json').transitions;
 
 const IndexPage = () => {
     const [value,setValue] = useState("54312");
+    const [tapeValue, setTapeValue] = useState("")
     const [currentLocation, setCurrentLocation] = useState(0);
     const onChange = (val) => {
       setValue(val)
@@ -22,9 +23,11 @@ const IndexPage = () => {
         const head = new Head();
         const machine = new Machine(Transitions, tape, head);
         machine.run((tapeString, location) => {
+            console.log("run")
             setCurrentLocation(location);
-            setValue(tapeString)
+            setTapeValue(tapeString)
         })
+
     };
 
     function test(string, integer){
@@ -46,6 +49,13 @@ const IndexPage = () => {
             </div>
             <div className="ortala">
                 {value.split('').map((x,index) =>
+                    "blank".indexOf(x) === -1 &&
+                    <TapeComponent isCurrent = {currentLocation === index} value = {x}/>
+                )}
+            </div>
+            <div className="ortala">
+                {tapeValue.split('').map((x,index) =>
+                    "blank".indexOf(x) === -1 &&
                     <TapeComponent isCurrent = {currentLocation === index} value = {x}/>
                 )}
             </div>

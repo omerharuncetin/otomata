@@ -6,10 +6,10 @@ class Tape {
         return this.tape.join("")
     }
     extendLeft() {
-        this.tape.unshift("blank")
+        this.tape.unshift(" ")
     }
     extendRight() {
-        this.tape.push("blank")
+        this.tape.push(" ")
     }
     write(symbol, location) {
         this.tape[location] = symbol

@@ -247,35 +247,35 @@
         },
         {
             "currentState": "q0",
-            "currentValue": "blank",
+            "currentValue": " ",
             "nextState": "l",
             "nextValue": "1",
             "direction": "L"
         },
         {
             "currentState": "q1",
-            "currentValue": "blank",
+            "currentValue": " ",
             "nextState": "l",
             "nextValue": "2",
             "direction": "L"
         },
         {
             "currentState": "q2",
-            "currentValue": "blank",
+            "currentValue": " ",
             "nextState": "l",
             "nextValue": "3",
             "direction": "L"
         },
         {
             "currentState": "q3",
-            "currentValue": "blank",
+            "currentValue": " ",
             "nextState": "l",
             "nextValue": "4",
             "direction": "L"
         },
         {
             "currentState": "q4",
-            "currentValue": "blank",
+            "currentValue": " ",
             "nextState": "l",
             "nextValue": "5",
             "direction": "L"
@@ -284,35 +284,35 @@
             "currentState": "l",
             "currentValue": "1",
             "nextState": "L",
-            "nextValue": "blank",
+            "nextValue": " ",
             "direction": "L"
         },
         {
             "currentState": "l",
             "currentValue": "2",
             "nextState": "L",
-            "nextValue": "blank",
+            "nextValue": " ",
             "direction": "L"
         },
         {
             "currentState": "l",
             "currentValue": "3",
             "nextState": "L",
-            "nextValue": "blank",
+            "nextValue": " ",
             "direction": "L"
         },
         {
             "currentState": "l",
             "currentValue": "4",
             "nextState": "L",
-            "nextValue": "blank",
+            "nextValue": " ",
             "direction": "L"
         },
         {
             "currentState": "l",
             "currentValue": "5",
             "nextState": "L",
-            "nextValue": "blank",
+            "nextValue": " ",
             "direction": "L"
         },
         {
@@ -352,14 +352,14 @@
         },
         {
             "currentState": "L",
-            "currentValue": "blank",
+            "currentValue": " ",
             "nextState": "J",
-            "nextValue": "blank",
+            "nextValue": " ",
             "direction": "R"
         },
         {
             "currentState": "J",
-            "currentValue": "blank",
+            "currentValue": " ",
             "nextState": "z",
             "nextValue": "!",
             "direction": "S"

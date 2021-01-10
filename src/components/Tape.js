@@ -17,7 +17,7 @@ export const Tape = ({value, isCurrent}) => {
             {isCurrent ? <span><CaretDownOutlined /></span> : <span> </span>}
             <span style={{backgroundColor: isCurrent ? "#d7aeae" : ""}} className="boxType">
                <span>
-                   {value}
+                   {value === " " ? "_" : value}
                </span>
             </span>
         </span>

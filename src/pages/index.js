@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import "../styles/index.css"
 import 'antd/dist/antd.css';
 import {InfoComponent} from "../components/infoComponent";
@@ -12,27 +12,45 @@ const Transitions = require('../../formatted.json').transitions;
 
 const IndexPage = () => {
     const [value,setValue] = useState("54312");
-    const [tapeValue, setTapeValue] = useState("")
+    const [tapeValue, setTapeValue] = useState("");
     const [currentLocation, setCurrentLocation] = useState(0);
+
     const onChange = (val) => {
       setValue(val)
+    };
+
+    const delayLoop = (fn, delay) => {
+        return (x, i) => {
+            setTimeout(() => {
+                x.tapeString = x.tapeString[0] === " " && x.tapeString[1] === " " ? x.tapeString.replaceAll(' ', '!') : x.tapeString
+                fn(x);
+            }, i * delay);
+        };
+    };
+
+    const display = (x) => {
+        setTapeValue(x.tapeString);
+        setCurrentLocation(x.location)
     };
 
     const Run = () => {
         const tape = new Tape(value);
         const head = new Head();
         const machine = new Machine(Transitions, tape, head);
-        machine.run((tapeString, location) => {
-            console.log("run")
-            setCurrentLocation(location);
-            setTapeValue(tapeString)
-        })
 
+        const tlist = [];
+        machine.run((tapeString, location, isContinuing) => {
+            if(isContinuing)
+                tlist.push({tapeString, location});
+            else{
+                setTimeout(() => {
+                    tlist.forEach(delayLoop(display, 500));
+                }, 500)
+
+            }
+        })
     };
 
-    function test(string, integer){
-
-    }
 
   return (
     <div>
@@ -49,15 +67,13 @@ const IndexPage = () => {
             </div>
             <div className="ortala">
                 {value.split('').map((x,index) =>
-                    "blank".indexOf(x) === -1 &&
-                    <TapeComponent isCurrent = {currentLocation === index} value = {x}/>
+                    <TapeComponent isCurrent = {index === 0 } value = {x}/>
                 )}
             </div>
             <div className="ortala">
-                {tapeValue.split('').map((x,index) =>
-                    "blank".indexOf(x) === -1 &&
-                    <TapeComponent isCurrent = {currentLocation === index} value = {x}/>
-                )}
+                {tapeValue.split('').map((item,index)=>
+                       <TapeComponent isCurrent = {currentLocation === index} value = {item}/>
+               )}
             </div>
 
         </div>

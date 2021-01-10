@@ -14,20 +14,9 @@ class Machine {
     stepLookup() {
         const ruleset = this.ruleset.find(x=> x.currentState === this.head.state
             && x.currentValue === this.tape.tape[this.head.location]);
-            console.log(ruleset)
-            console.log("head state : " + this.head.state)
-            console.log("tape head : " +this.tape.tape[this.head.location])
-
+        console.log("TEST",this.head.state, this.head.location, ruleset);
 
         return ruleset ? ruleset : false
-
-         /*
-        if (this.ruleset[this.head.state] && this.ruleset[this.head.state][this.tape.tape[this.head.location]]) {
-            return this.ruleset[this.head.state][this.tape.tape[this.head.location]]
-        } else {
-            return false
-        }
-          */
     }
 
     step() {
@@ -37,7 +26,7 @@ class Machine {
         let move = lookup.direction;
 
         this.tape.write(new_symbol, this.head.location);
-        this.head.state = new_state
+        this.head.state = new_state;
         this.shiftHead(move)
     }
 
@@ -60,9 +49,16 @@ class Machine {
     }
 
     run(currentTape) {
-        while (this.stepLookup() ) {
-            this.step();
-            currentTape(this.tape.status, this.head.location)
+        while (true) {
+            if(this.stepLookup()){
+                this.step();
+                currentTape(this.tape.status, this.head.location, this.stepLookup())
+            }
+            else{
+                currentTape(this.tape.status, this.head.location, false);
+                break;
+            }
+
         }
     }
 }

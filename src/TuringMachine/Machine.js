@@ -4,7 +4,8 @@ class Machine {
     constructor(ruleset, tape, head) {
         this.ruleset = ruleset;
         this.tape = tape;
-        this.head = head
+        this.head = head;
+        this.steps = []
     }
 
     get status() {
@@ -14,7 +15,11 @@ class Machine {
     stepLookup() {
         const ruleset = this.ruleset.find(x=> x.currentState === this.head.state
             && x.currentValue === this.tape.tape[this.head.location]);
-        console.log("TEST",this.head.state, this.head.location, ruleset);
+
+        if(ruleset){
+            this.steps.push(`${ruleset.currentState} durumundayken ${ruleset.currentValue} gelirse ${ruleset.nextState} durumuna gider ${ruleset.nextValue} yazar ve ${ruleset.direction === "L" ? "tape üzerinde sola gider." : ruleset.direction === "R" ? "tape üzerinde sağa gider." : 
+            "tape üzerinde olduğu yerde kalır."}`);
+        }
 
         return ruleset ? ruleset : false
     }
@@ -52,10 +57,10 @@ class Machine {
         while (true) {
             if(this.stepLookup()){
                 this.step();
-                currentTape(this.tape.status, this.head.location, this.stepLookup())
+                currentTape(this.tape.status, this.head.location, this.stepLookup(), [])
             }
             else{
-                currentTape(this.tape.status, this.head.location, false);
+                currentTape(this.tape.status, this.head.location, false, this.steps);
                 break;
             }
 

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react"
+import React, {useState} from "react"
 import "../styles/index.css"
 import 'antd/dist/antd.css';
 import {InfoComponent} from "../components/infoComponent";
@@ -8,72 +8,99 @@ import TapeComponent from "../components/Tape";
 import Tape from "../TuringMachine/Tape"
 import Head from "../TuringMachine/Head"
 import Machine from "../TuringMachine/Machine";
+import { Input } from 'antd';
+
+const { TextArea } = Input;
 const Transitions = require('../../formatted.json').transitions;
 
 const IndexPage = () => {
     const [value,setValue] = useState("54312");
     const [tapeValue, setTapeValue] = useState("");
     const [currentLocation, setCurrentLocation] = useState(0);
-    const [time, settime] = useState(500);
-    const [allowToRun, setAllowToRun] = useState(true)
+    const [time, setTime] = useState(500);
+    const [allowToRun, setAllowToRun] = useState(true);
+    const [textAreaValue, setTextAreaValue] = useState("");
 
     const onChange = (val) => {
       setValue(val)
     };
 
-    const delayLoop = (fn) => {
-           return (x, i) => {
-               if(allowToRun)
-               {
-                   setTimeout(() => {
-                       x.tapeString = x.tapeString[0] === " " && x.tapeString[1] === " " ? x.tapeString.replaceAll(' ', '!') : x.tapeString
-                       fn(x);
-                   }, i * time);
-               }
-           };
-
-    };
-
     const display = (x) => {
         setTapeValue(x.tapeString);
-        setCurrentLocation(x.location)
+        setCurrentLocation(x.location);
+    };
+
+    const makeSet = (steps, array) => {
+        array.map((item,index) =>{
+            if(index === 0 ||index % 3 === 0)
+                steps.push(item);
+        });
+    };
+
+    const displayTape = (tList) => {
+        tList.forEach((transition, index) => {
+            if(allowToRun)
+            {
+                setTimeout(() => {
+                    transition.tapeString = transition.tapeString[0] === " " && transition.tapeString[1] === " "
+                        ? transition.tapeString.replaceAll(' ', '!') : transition.tapeString;
+                    display(transition);
+                }, index * time);
+            }
+        });
+    };
+
+    const writeTransitions = (steps) => {
+        steps.forEach((item,index) => {
+            setTimeout(() => {
+                if(index ===  steps.length - 1){
+                    setTextAreaValue(currentVal => {
+                        currentVal += currentVal.indexOf("Sıralama") > -1 ? "" :
+                            steps[steps.length - 1 ] + "\nSıralama işlemi tamamlanmış olur.";
+                        return currentVal
+                    })
+                }
+                else{
+                    item && setTextAreaValue(currentVal => {
+                        currentVal += item + "\n";
+                        return currentVal
+                    });
+                }
+            }, index * time)
+        })
     };
 
     const Run = () => {
-        setAllowToRun(true)
+        setAllowToRun(true);
+        setTextAreaValue("");
         const tape = new Tape(value);
         const head = new Head();
         const machine = new Machine(Transitions, tape, head);
 
-        const tlist = [];
-        machine.run((tapeString, location, isContinuing) => {
+        const tList = [];
+        machine.run((tapeString, location, isContinuing, machineSteps) => {
             if(isContinuing)
-                tlist.push({tapeString, location});
+                tList.push({tapeString, location});
             else{
+                const steps = [];
+                makeSet(steps,machineSteps);
                 setTimeout(() => {
-                    tlist.forEach(delayLoop(display, time));
+                    displayTape(tList);
+                    writeTransitions(steps)
                 }, 500)
-
             }
         })
     };
 
     const timeUp = () =>
     {
-        settime(2*time)
-        console.log(time)
-    }
+        setTime(2*time);
+    };
 
     const timeDown = () =>
     {
-        settime(time/2)
-        console.log(time)
-    }
-
-    const Sifirla = () =>
-    {
-        setAllowToRun(false);
-    }
+        setTime(time/2)
+    };
 
   return (
     <div>
@@ -83,15 +110,14 @@ const IndexPage = () => {
             <div>
                 <Button onClick = {() => timeDown()} style={{margin : "1%"}} type="">Hızlandır</Button>
                 <Button onClick = {() => timeUp()} style={{margin : "1%"}} type="">Yavaşlat</Button>
-                <p style={{marginLeft: '1.5%'}}>Gecikme Zamanı: {time}</p>
+                <p style={{marginLeft: '1.5%'}}>Gecikme Zamanı: {time / 1000} saniye</p>
                 </div>
             <div style={{
                 display : "flex",
                 flex : 1,
                 justifyContent : "flex-end"
             }}>
-                <Button onClick={() => Sifirla()} style={{margin : "1%"}} type="danger">Sıfırla</Button>
-                <Button onClick={() => Run()} style={{margin : "1%"}} type="primary">Çalıştır</Button>
+                <Button size={'large'} onClick={() => Run()} style={{margin : "1%"}} type="primary">Çalıştır</Button>
             </div>
             <div className="ortala">
                 {value.split('').map((x,index) =>
@@ -103,7 +129,11 @@ const IndexPage = () => {
                        <TapeComponent isCurrent = {currentLocation === index} value = {item}/>
                )}
             </div>
-
+            <br/><br/>
+            <div className="ortala">
+                <h3>Geçişler</h3>
+                <TextArea readOnly value={textAreaValue} rows={17} />
+            </div>
         </div>
     </div>
   )
